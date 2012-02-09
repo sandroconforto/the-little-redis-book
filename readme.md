@@ -1,24 +1,21 @@
 ## About ##
-The Little Redis Book is a free book introducing Redis.
+Little Redis Book è un'introduzione a Redis.
 
-The book was written by [Karl Seguin](http://openmymind.net), with [Perry Neal](http://twitter.com/perryneal)'s assistance.
+Questo libro è stato originariamente scritto da [Karl Seguin](http://openmymind.net), e tradotto in versione italiana da Sandro Conforto.
 
-If you liked this book, maybe you'll also like [The Little MongoDB Book](http://openmymind.net/2011/3/28/The-Little-MongoDB-Book/).
+Se è piaciuto questo libro, potrebbe interessare anche [The Little MongoDB Book](http://openmymind.net/2011/3/28/The-Little-MongoDB-Book/), in lingua inglese.
 
-## License ##
-The book is freely distributed under the  [Attribution-NonCommercial 3.0 Unported license](<http://creativecommons.org/licenses/by-nc/3.0/legalcode>).
+## Licenza ##
+Il libro è liberamente distribuibile sotto la licenza [Attribution-NonCommercial 3.0 Unported license](<http://creativecommons.org/licenses/by-nc/3.0/legalcode>).
 
-## Translations ##
+## Formato ##
+Il libro è scritto in [Markdown](http://daringfireball.net/projects/markdown/) e convertito in PDF usando [pandoc](http://johnmacfarlane.net/pandoc/). Si sono inseriti inoltre alcuni comandi specifici Latex per migliorare la conversione in PDF.
 
-* [Russian](https://github.com/kondratovich/the-little-redis-book)
+Per generare le versioni PDF, Kindle, EPUB, installare [pandoc](http://johnmacfarlane.net/pandoc/), un convertitore universale di documenti.
 
-## Formats ##
-The book is written in [Markdown](http://daringfireball.net/projects/markdown/) and converted to PDF using [pandoc](http://johnmacfarlane.net/pandoc/). A few LaTex specific commands have been placed in the Markdown file to help with PDF-generation (namely for the title page and to create page breaks between chapters).
 
-To generate PDF, Kindle and EPUB formats, download and install [pandoc](http://johnmacfarlane.net/pandoc/), a universal document converter.
-
-## Generating the PDF ##
-pandoc includes markdown2pdf to generate the PDF using a variation of <https://github.com/claes/pandoc-templates>:
+## Generare il PDF ##
+pandoc include markdown2pdf per generare il PDF usando una modifica di un template <https://github.com/claes/pandoc-templates>:
 
 	#!/bin/sh
 	paper=a4paper
@@ -38,17 +35,17 @@ pandoc includes markdown2pdf to generate the PDF using a variation of <https://g
 	-V paper=$paper -V hmargin=$hmargin -V vmargin=$vmargin \
 	-V mainfont="$mainfont" -V sansfont="$sansfont" -V monofont="$monofont" \
 	-V geometry=$geometry -V columns=$columns -V fontsize=$fontsize \
-	-V nohyphenation=$nohyphenation en/redis.md -o redis.pdf
+	-V nohyphenation=$nohyphenation it/redis.md -o redis.pdf
 
-## Generating the EPUB ##
-Use the following command (modified from the one found at <http://news.ycombinator.com/item?id=3502033>) to generate the EPUB:
+## Generare l'EPUB ##
+Usare il seguente comando per generare la versione EPUB:
 
 	pandoc -f markdown -t epub --epub-metadata=en/metadata.xml \
 	--template=template/xetex.template -V paper=$paper \
 	-V hmargin=$hmargin -V vmargin=$vmargin -V mainfont="$mainfont" \
 	-V sansfont="$sansfont" -V monofont="$monofont" -V geometry=$geometry \
 	-V columns=$columns -V fontsize=$fontsize -V nohyphenation=$nohyphenation \
-	en/redis.md -o redis.epub
+	it/redis.md -o redis.epub
 
-## Title Image ##
-A PSD of the title image is included. The font used is [Comfortaa](http://www.dafont.com/comfortaa.font).
+## L'Immagine del Titolo ##
+Viene inclusa un'immagine PSD dell'immagine del titolo. Il font usato è [Comfortaa](http://www.dafont.com/comfortaa.font).

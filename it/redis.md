@@ -33,14 +33,16 @@ Sandro Conforto si occupa professionalmente dello sviluppo di applicazioni iPad 
 
 Un ringraziamento speciale va a [Perry Neal](https://twitter.com/perryneal) per aver *prestato* i suoi occhi, la sua mente e la sua passione. Grazie per l'inestimabile aiuto.
 
-<!--
-Il traduttore ringrazia di cuore Salvatore Sanfilippo, autore di Redis, per averlo incoraggiato, e per aver letto la bozza finale. 
--->
+
+Il traduttore ringrazia di cuore Salvatore Sanfilippo, autore di Redis, per l'incoraggiamento nella stesura, e per aver dato la sua approvazione alla bozza finale. 
+
 
 ### Ultima Versione 
 
 L'ultima versione di questo libro è disponibile su:  
 [http://github.com/sandroconforto/the-little-redis-book](http://github.com/sandroconforto/the-little-redis-book)
+
+E' possibile, anzi ben accetto, il fork e il *pull request* per qualsiasi contribuzione al libro.
 
 \clearpage
 
@@ -61,7 +63,7 @@ ci si concentrerà nell'imparare le cinque strutture dati fondamentali e nel con
 
 ## Come Iniziare
 
-Ognuno di noi ha un modo di imparare differente: alcuni preferiscono "sporcarsi subito le mani", altri preferiscono guardare dei video, altri ancora prediligono leggere. Niente aiuterà di più la comprensione di Redis che non provarlo. 
+Ognuno di noi ha un modo di imparare differente: alcuni preferiscono \"sporcarsi subito le mani\", altri preferiscono guardare dei video, altri ancora prediligono leggere. Niente aiuterà di più la comprensione di Redis che non provarlo. 
 E' facile da installare e di base è fornito di una shell per cominciare subito a sperimentare. Un paio di minuti e sarà già pronto e funzionante sulla propria macchina.
 
 ### Su Windows
@@ -200,7 +202,7 @@ Come nota a margine, i 5.5MB dell'opera completa di Shakespeare possono essere c
 Si sono toccati diversi argomenti ad un alto livello. Occorre ora mettere tutte queste cose assieme. In particolare, le limitazioni sulle interrogazioni, le strutture dati e il modo di memorizzare i dati in memoria in Redis.
 
 
-Quando si mettono queste tre cose assieme si ottiene una cosa fantastica: velocità. Alcune persone potrebbero dire: "Per forza è veloce, tutto è in memoria". Ma questo è solo un aspetto. La vera ragione per cui Redis spicca rispetto ad altre soluzioni sono le sue strutture dati specializzate. 
+Quando si mettono queste tre cose assieme si ottiene una cosa fantastica: velocità. Alcune persone potrebbero dire: \"Per forza è veloce, tutto è in memoria\". Ma questo è solo un aspetto. La vera ragione per cui Redis spicca rispetto ad altre soluzioni sono le sue strutture dati specializzate. 
 
 Ma quanto veloce? Dipende da un gran numero di fattori - che comandi si usino, i tipi di dato e così via. Ad ogni modo le prestazioni di Redis si possono misurare in decine o addirittura centinaia di migliaia di operazioni **per secondo**. Per rendersene conto è sufficiente eseguire `redis-benchmark` dalla stessa cartella in cui si trovano `redis-server` e `redis-cli`.
 
@@ -276,7 +278,7 @@ In precedenza si è detto che Redis non dà importanza ai valori. Questo per la 
 
 Come si può intuire, le stringhe Redis sono ottime per costruire delle statistiche. Si provi, come esercizio, a incrementare `users:leto` (un valore non intero) e si veda cosa succede: si dovrebbe ottenere un errore.
 
-Un esempio avanzato sono i comandi `setbit` e `getbit`. Si veda ad esempio il  [fantastico post](http://blog.getspool.com/2011/11/29/fast-easy-realtime-metrics-using-redis-bitmaps/) in cui Spool usa in maniera molto efficiente questi due comandi per rispondere al questito "quanti visitatori unici si sono avuti oggi?". Usando un portatile e inseriti 128 milioni di utenti, la risposta viene generata in meno di 50 ms occupando meno di 16MB di memoria.
+Un esempio avanzato sono i comandi `setbit` e `getbit`. Si veda ad esempio il  [fantastico post](http://blog.getspool.com/2011/11/29/fast-easy-realtime-metrics-using-redis-bitmaps/) in cui Spool usa in maniera molto efficiente questi due comandi per rispondere al questito \"quanti visitatori unici si sono avuti oggi?\". Usando un portatile e inseriti 128 milioni di utenti, la risposta viene generata in meno di 50 ms occupando meno di 16MB di memoria.
 
 Capire come funzionino le mappe di bit, o come Spool le usi, esula dagli scopi di questo libro, ma rimane importante vedere come le stringhe Redis siano più potenti di quanto inizialmente possa sembrare. Ad ogni modo il caso più comune per le stringhe è memorizzare oggetti (complessi o meno) e contatori. Inoltre, dato che ottenere un valore per chiave è così efficiente, sono spesso usate come  *cache* dati.
 
@@ -365,9 +367,9 @@ E il posto in classifica di `chani`?
 
 Si noti l'uso di `zrevrank` al posto di `zrank` in quanto l'ordinamento di default è crescente e in questo caso la graduatoria va chiaramente dal più grande al più piccolo. E' evidente l'immediatezza di costruire una classifica in tempo reale tra utenti (`leaderboard system`) facendo uso proprio degli insiemi ordinati. In effetti, però, data l'estrema genericità della struttura, ogni entità che si possa ordinare tramite un qualche intero, e su cui si vogliano applicare in maniera efficiente delle operazioni basate su tale graduatoria, si presta a essere persistita tramite un insieme ordinato Redis.
 
-<!---
+
 Nel prossimo capitolo vedremo come gli insiemi ordinati possano essere usati per tenere traccia di eventi temporali (il tempo stabilisce in questo caso una sorta di graduatoria).
->
+
 
 <!---
 In the next chapter we'll look at how sorted sets can be used for tracking events which are time-based (where time is the score); which is another common use-case.
@@ -549,9 +551,24 @@ Alla fine della transazione `powerlevel` continua a valere il valore iniziale. S
 
 La cosa da sottolineare è che se un altro *client* cambiasse il valore di `powerlevel` dopo aver chiamato il comando `watch` su di esso, la transazione fallirebbe. Si potrebbe eseguire questo codice in un ciclo fino a che non va a buon fine.
 
-<!---
+
 
 ### Valori Temporali
+
+Un pattern meno comune, ma ugualmente interessante, prevede l'uso di insiemi ordinati per tenere traccia di valori temporali.
+
+Si voglia per esempio tracciare il prezzo di un'azione. Come chiave potrebbe usare il simbolo, il criterio di classificazione potrebbe essere il *timestamp* e il valore il prezzo:
+
+	redis.zadd('GOOG', Time.now.utc.to_i-100, 625.03)
+	redis.zadd('GOOG', Time.now.utc.to_i-95, 623.01)
+	redis.zadd('GOOG', Time.now.utc.to_i-95, 625.02)
+	redis.zadd('GOOG', Time.now.utc.to_i-92, 624.98)
+
+Usando `zrangebyscore` si può ottenere un intervallo di valori basati sul tempo. Se si volessero così sapere i prezzi degli ultimi 5 secondi si potrebbe usare la seguente istruzione: 
+
+	redis.zrangebyscore('GOOG', (Time.now.utc - 5).to_i, Time.now.utc.to_i)
+
+<!---
 
 A slightly less common pattern that I'm fond of is using sorted sets to track time value. In Redis' documentation the sorting value is called a *score*, which might limit some people's imagination of different ways they can put it to use. 
 
@@ -753,7 +770,7 @@ Il nostro ultimo capitolo è dedicato agli aspetti amministrativi dell'esecuzion
 
 ### Configurazione
 
-Quando si è lanciato la prima volta Redis server, esso ci ha avvertito della mancanza del file `redis.conf`. Questo file viene usato per configurare i vari aspetti di Redis. Ad ogni rilascio viene fornito un file di cofigurazione ben documentato e commentato (per questo motivo non si citeranno qui tutte le opzioni). Il file di esempio contiene le configurazioni di default, per cui è utile sia per sapere le svariate possibiltà di personalizzazione che per conoscere i valori di default. Si può trovare, per l'ultima versione disponibile al momento della scrittura di questo libro, all'URL <https://github.com/antirez/redis/raw/2.4.6/redis.conf>. **Per adattarlo alla propria versione sarà sufficiente sostituire "2.4.6" nell'indirizzo con la propria specifica versione. Si può conoscere la propria versione semplicemente eseguendo il comando `info` da linea di comando e guardare il primo valore.**
+Quando si è lanciato la prima volta Redis server, esso ci ha avvertito della mancanza del file `redis.conf`. Questo file viene usato per configurare i vari aspetti di Redis. Ad ogni rilascio viene fornito un file di cofigurazione ben documentato e commentato (per questo motivo non si citeranno qui tutte le opzioni). Il file di esempio contiene le configurazioni di default, per cui è utile sia per sapere le svariate possibiltà di personalizzazione che per conoscere i valori di default. Si può trovare, per l'ultima versione disponibile al momento della scrittura di questo libro, all'URL <https://github.com/antirez/redis/raw/2.4.6/redis.conf>. **Per adattarlo alla propria versione sarà sufficiente sostituire \"2.4.6\" nell'indirizzo con la propria specifica versione. Si può conoscere la propria versione semplicemente eseguendo il comando `info` da linea di comando e guardare il primo valore.**
 
 
 Oltre al file `redis.conf`, è possibile usare il comando `config set` per impostare opzioni individuali. Si è già fatto uso di tale comando quando si è impostato il valore di `slowlog-log-slower-than` a 0, in modo che venisse profilato ogni comando.
@@ -777,7 +794,7 @@ Come soluzione più radicale è possibile disabilitare completamente un comando 
 
 ### Dimensioni Massime
 
-Ci si potrà chiedere "quante chiavi è possibile memorizzare?". Si potrebbe in maniera analoga aver bisogno di sapere quante proprietà è possibile associare a un hash, o quanti elementi può contenere una lista o un insieme. Si tenga conto che, per ogni istanza Redis, il limite pratico per tutti questi aspetti è dell'ordine delle centinaia di milioni di elementi.
+Ci si potrà chiedere \"quante chiavi è possibile memorizzare?\". Si potrebbe in maniera analoga aver bisogno di sapere quante proprietà è possibile associare a un hash, o quanti elementi può contenere una lista o un insieme. Si tenga conto che, per ogni istanza Redis, il limite pratico per tutti questi aspetti è dell'ordine delle centinaia di milioni di elementi.
 
 ### Ridondanza
 
