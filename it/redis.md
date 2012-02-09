@@ -27,14 +27,14 @@ Il suo blog si trova a <http://openmymind.net> e i suoi tweets su [@karlseguin](
 
 ### Il Traduttore
 
-Sandro Conforto si occupa professionalmente dello sviluppo di applicazioni iPad in ambito finanziario. Si occupa inoltre di Android e di J2EE. E' da sempre appassionato di Open Source, Linux, e di linguaggi dinamici. Vede lo sviluppo software prima di tutto come un'attività creativa. Quando non si dedica all' informatica ama andare in snow board e suonare la sua [chitarra classica ed elettrica](http://www.myspace.com/shantixmusic).
+Sandro Conforto si occupa professionalmente dello sviluppo di applicazioni iPad in ambito finanziario. Si dedica inoltre ad Android e a J2EE. E' da sempre appassionato di Open Source, Linux, e di linguaggi dinamici. Vede lo sviluppo software prima di tutto come un'attività creativa. Quando non si dedica all' informatica ama andare in snow board e suonare la sua [chitarra classica ed elettrica](http://www.myspace.com/shantixmusic).
 
 ### Ringraziamenti 
 
 Un ringraziamento speciale va a [Perry Neal](https://twitter.com/perryneal) per aver *prestato* i suoi occhi, la sua mente e la sua passione. Grazie per l'inestimabile aiuto.
 
 
-Il traduttore ringrazia di cuore Salvatore Sanfilippo, autore di Redis, per l'incoraggiamento nella stesura, e per aver dato la sua approvazione alla bozza finale. 
+Il traduttore ringrazia di cuore Salvatore Sanfilippo, autore di Redis, per l'incoraggiamento nella stesura, e per aver dato la sua validazione alla bozza finale. 
 
 
 ### Ultima Versione 
