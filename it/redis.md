@@ -31,18 +31,16 @@ Sandro Conforto si occupa professionalmente dello sviluppo di applicazioni iPad 
 
 ### Ringraziamenti 
 
-Un ringraziamento speciale va a [Perry Neal](https://twitter.com/perryneal) per aver *prestato* i suoi occhi, la sua mente e la sua passione. Grazie per l'inestimabile aiuto.
+Il traduttore ringrazia di cuore [Salvatore Sanfilippo](http://antirez.com/), autore di Redis, per l'incoraggiamento nella stesura, e per aver dato la sua validazione alla bozza finale. Grazie Salvatore!
 
-
-Il traduttore ringrazia di cuore Salvatore Sanfilippo, autore di Redis, per l'incoraggiamento nella stesura, e per aver dato la sua validazione alla bozza finale. 
-
+L'autore ringrazia in special modo [Perry Neal](https://twitter.com/perryneal) per aver *prestato* i suoi occhi, la sua mente, e la sua passione contribuendo alla riuscita di questo libro.
 
 ### Ultima Versione 
 
-L'ultima versione di questo libro è disponibile su:  
+L'ultima versione di questo libro è disponibile sul repository *github*:  
 [http://github.com/sandroconforto/the-little-redis-book](http://github.com/sandroconforto/the-little-redis-book)
 
-E' possibile, anzi ben accetto, il fork e il *pull request* per qualsiasi contribuzione al libro.
+E' ben accetto, per ogni contrubuzione al libro, il fork e il *pull request* del *repository*.
 
 \clearpage
 
@@ -103,11 +101,13 @@ In caso di problemi è possibile cercare aiuto nel
 [gruppo di supporto ufficiale di Redis](https://groups.google.com/forum/#!forum/redis-db).
 
 
-## I Drivers per Linguaggio
+### I Drivers per Linguaggio
 
-Come si scoprirà presto, l'approccio di programmazione in Redis è di tipo procedurale. In questo modo, sia che si usi l'interfaccia a linea di comando, sia che si usi un driver per il proprio linguaggio favorito, non ci saranno molte differenze. Quindi non ci saranno problemi nel seguire questa guida adottando un qualsiasi linguaggio di programmazione. E' possibile reperire i vari drivers a partire dalla pagina [client page](http://redis.io/clients).
+Come si scoprirà presto, l'approccio di programmazione in Redis è di tipo procedurale. In questo modo, sia che si usi l'interfaccia a linea di comando, sia che si usi un driver per il proprio linguaggio favorito, non ci saranno molte differenze. Non ci saranno problemi, quindi, nel seguire questa guida adottando un qualsiasi linguaggio di programmazione. E' possibile reperire i vari drivers a partire dalla pagina [dei clients](http://redis.io/clients).
 
-Dato che saranno presenti in questa guida degli esempi nel linguaggio Ruby, si riporta brevementa la procedura per usare Redis con esso. Dopo aver installato il linguaggio (http://www.ruby-lang.org/it/), si eseguano i seguenti comandi:
+### Il Driver Ruby
+
+Dato che saranno presenti in questa guida degli esempi nel linguaggio Ruby, si riporta brevementa la procedura per usare Redis con esso. Dopo aver installato il linguaggio ([www.ruby-lang.org/it/](http://www.ruby-lang.org/it/)), si eseguano i seguenti comandi:
 
 	gem install redis
 	gem install SystemTimer
@@ -119,7 +119,7 @@ Si entri nell'ambiente interattivo (`irb`) e si digitino le seguenti istruzioni:
 	redis = Redis.new
 	redis.ping
 
-se il server risponde con la stringa `PONG` tutto è a posto. In caso di problemi, si può fare riferimento alla [pagina del client](http://redis-rb.keyvalue.org/).  
+se il server risponde con la stringa `PONG` tutto è a posto. In caso contrario, si può fare riferimento alla [pagina del client](http://redis-rb.keyvalue.org/).  
 
 \clearpage
 
@@ -138,8 +138,6 @@ Se dovessimo applicare il concetto di struttura dati al mondo relazionale, potre
 Usare sutrutture dati specifiche per specifici problemi? Ma non è esattamente quello che facciamo quando programmiamo? A mio parere, questo è proprio l'approccio di Redis. Se ci si trova ad operare con scalari, liste, 'hashes', insiemi, perché non persisterle appunto come scalari, liste, 'hashes' e insiemi?
 Ancora, perché verificare la presenza di una chiave deve essere più complesso di un `exists(key)` o più lento di O(1) (cioè un tempo constante, indipendente da quanti elementi sono presenti)?
 
-
-## Elementi Fondamentali
 
 ### Basi di Dati
 
@@ -385,7 +383,7 @@ Si è fatta una panoramica ad alto livello delle cinque strutture dati in Redis.
 
 
 
-## Capitolo 3 -  Chapter 3 - Sfruttare Appieno le Strutture Dati 
+## Capitolo 3 - Sfruttare Appieno le Strutture Dati 
 
 Nel precedente capitolo abbiamo trattato le cinque strutture dato e fornito qualche esempio di problemi che esse possono risolvere. Si può quindi procedere ad argomenti e *design pattern* maggiormente avanzati, ancorché comuni.
 
@@ -471,7 +469,7 @@ Pensadoci un attimo però, i database relazionali, in modo nascosto, hanno comun
 Ad ogni modo ogni preoccupazione riguardo performance o memoria va testata nel proprio caso. Probabilmente verrà scoperto che il tutto è un falso problema.
 
 
-### *Pipelining*, Transazioni e Raggruppamenti di Interazioni
+### *Pipelining*, Transazioni e Gruppi di Interazioni
 
 Si è detto in precedenza che in Redis può essere necessario effettuare frequenti interazioni col server. A questo riguardo è opportuno introdurre alcune funzionalità offerte che aiuteranno a sfruttare al meglio questo tipo di interazione.
 
