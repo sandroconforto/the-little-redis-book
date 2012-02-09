@@ -8,7 +8,7 @@ Se è piaciuto questo libro, potrebbe interessare anche [The Little MongoDB Book
 -->
 
 ## Licenza ##
-Il libro è liberamente distribuibile sotto la licenza [Attribution-NonCommercial 3.0 Unported license](<http://creativecommons.org/licenses/by-nc/3.0/legalcode>).
+Il libro è liberamente distribuibile sotto la licenza [Attribution-NonCommercial 3.0 Unported](<http://creativecommons.org/licenses/by-nc/3.0/legalcode>).
 
 ## Formato ##
 Il libro è scritto in [Markdown](http://daringfireball.net/projects/markdown/) e convertito in PDF usando [pandoc](http://johnmacfarlane.net/pandoc/). Si sono inseriti inoltre alcuni comandi specifici Latex per migliorare la conversione in PDF.
