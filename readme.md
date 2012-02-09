@@ -3,7 +3,9 @@ Little Redis Book è un'introduzione a Redis.
 
 Questo libro è stato originariamente scritto da [Karl Seguin](http://openmymind.net), e tradotto in versione italiana da Sandro Conforto.
 
+<!---
 Se è piaciuto questo libro, potrebbe interessare anche [The Little MongoDB Book](http://openmymind.net/2011/3/28/The-Little-MongoDB-Book/), in lingua inglese.
+-->
 
 ## Licenza ##
 Il libro è liberamente distribuibile sotto la licenza [Attribution-NonCommercial 3.0 Unported license](<http://creativecommons.org/licenses/by-nc/3.0/legalcode>).
