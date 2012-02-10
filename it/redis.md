@@ -40,7 +40,7 @@ L'autore ringrazia in special modo [Perry Neal](https://twitter.com/perryneal) p
 L'ultima versione di questo libro è disponibile sul repository *github*:  
 [http://github.com/sandroconforto/the-little-redis-book](http://github.com/sandroconforto/the-little-redis-book)
 
-E' ben accetto, per ogni contrubuzione al libro, il fork e il *pull request* del *repository*.
+E' ben accetto, per ogni contribuzione al libro, il fork e il *pull request* del *repository*.
 
 \clearpage
 
@@ -88,14 +88,14 @@ Se si sono compilati i sorgenti, gli eseguibili si troveranno entro la cartella 
 
 ### Esecuzione e Connessione a Redis
 
-Se è andato tutto a buon fine, gli eseguibili dovrebbero essere nella cartella corrente. Ci si concentrerà dapprima su Redis server e sull'interfaccia a linea di comando. Per far partire il server sotto Windows doppio click su `redis-server`, sotto *nix/MacOSX esegire `./redis-server` da terminale.
+Se è andato tutto a buon fine, gli eseguibili dovrebbero essere nella cartella corrente. Ci si concentrerà dapprima su Redis server e sull'interfaccia a linea di comando. Per far partire il server sotto Windows doppio click su `redis-server`, sotto *nix/MacOSX eseguire `./redis-server` da terminale.
 
 
 Nel messaggio di avvio Redis avvisa la mancanza del file `redis.conf`. Redis userà in questo caso delle impostazioni di default, perfette per i nostri scopi. 
 
 Si esegua quindi l'interfaccia a linea di comando facendo doppio click su `redis-cli` (Windows) o eseguendo `redis-cli` (*nix/MacOSX). Così facendo si effettuerà una connessione al server locale sulla porta di default (6379).
 
-Si può testare che tutto funzioni impartendo il comando `info`. Dovrebbero essere così mostrate una serie di coppie chiave-valore che danno a colpo d'ochio le caratteristiche e lo stato del server.
+Si può testare che tutto funzioni impartendo il comando `info`. Dovrebbero essere così mostrate una serie di coppie chiave-valore che danno a colpo d'occhio le caratteristiche e lo stato del server.
 
 In caso di problemi è possibile cercare aiuto nel 
 [gruppo di supporto ufficiale di Redis](https://groups.google.com/forum/#!forum/redis-db).
@@ -107,7 +107,7 @@ Come si scoprirà presto, l'approccio di programmazione in Redis è di tipo proc
 
 ### Il Driver Ruby
 
-Dato che saranno presenti in questa guida degli esempi nel linguaggio Ruby, si riporta brevementa la procedura per usare Redis con esso. Dopo aver installato il linguaggio ([www.ruby-lang.org/it/](http://www.ruby-lang.org/it/)), si eseguano i seguenti comandi:
+Dato che saranno presenti in questa guida degli esempi nel linguaggio Ruby, si riporta brevemente la procedura per usare Redis con esso. Dopo aver installato il linguaggio ([www.ruby-lang.org/it/](http://www.ruby-lang.org/it/)), si eseguano i seguenti comandi:
 
 	gem install redis
 	gem install SystemTimer
@@ -132,10 +132,10 @@ Si sente spesso dire che Redis sia un datastore chiave-valore persistito, ma non
 
 In effetti Redis espone cinque differenti strutture dati, delle quali solo una è una tipica struttura chiave-valore. Capire queste cinque strutture, come funzionino, quali metodi espongano e cosa si possa modellare con esse è la chiave per capire Redis. Per prima cosa, vediamo come siano queste strutture dati.
 
-Se dovessimo applicare il concetto di struttura dati al mondo relazionale, potremmo dire che i database espongono una e unica struttura dati: la tabella. Le tabelle in tal modo devono gestire sia casi complessi che semplicie quindi essere flessibili. Non esiste molto che non possa essere modellato con esse. D'altra parte, la loro struttura, così generica, può anche dar luogo a problematiche. In particolare, niente è così semplice o veloce, come potrebbe essere. Se invece avessimo a disposizione, invece di una unica struttura per tutto, di strutture dati più specifiche? Ci potrebbero essere delle cose che non si possono più fare (o almeno, non altrettanto bene), ma sicuramente si gudagnerebbe in semplicità e velocità! 
+Se dovessimo applicare il concetto di struttura dati al mondo relazionale, potremmo dire che i database espongono una e unica struttura dati: la tabella. Le tabelle in tal modo devono gestire sia casi complessi che semplice quindi essere flessibili. Non esiste molto che non possa essere modellato con esse. D'altra parte, la loro struttura, così generica, può anche dar luogo a problematiche. In particolare, niente è così semplice o veloce, come potrebbe essere. Se invece avessimo a disposizione, invece di una unica struttura per tutto, di strutture dati più specifiche? Ci potrebbero essere delle cose che non si possono più fare (o almeno, non altrettanto bene), ma sicuramente si guadagnerebbe in semplicità e velocità! 
 
 
-Usare sutrutture dati specifiche per specifici problemi? Ma non è esattamente quello che facciamo quando programmiamo? A mio parere, questo è proprio l'approccio di Redis. Se ci si trova ad operare con scalari, liste, 'hashes', insiemi, perché non persisterle appunto come scalari, liste, 'hashes' e insiemi?
+Usare strutture dati specifiche per specifici problemi? Ma non è esattamente quello che facciamo quando programmiamo? A mio parere, questo è proprio l'approccio di Redis. Se ci si trova ad operare con scalari, liste, 'hashes', insiemi, perché non persisterle appunto come scalari, liste, 'hashes' e insiemi?
 Ancora, perché verificare la presenza di una chiave deve essere più complesso di un `exists(key)` o più lento di O(1) (cioè un tempo constante, indipendente da quanti elementi sono presenti)?
 
 
@@ -143,7 +143,7 @@ Ancora, perché verificare la presenza di una chiave deve essere più complesso 
 
 Redis si fonda sugli stessi concetti di un database: persiste un insieme di dati, mantiene inoltre coerenti i dati di un'applicazione tenendoli separati da quelli di una seconda.
 
-In Redis, i database sono identificati da un numero, quello di default è il numero `0`. Per selezionare un database differente è sufficiente usare il comando `select` seguito dal numero identificiativo: ad esempio digitare `select 1`. Redis dovrebbe restituire il messaggio `OK` e il prompt dovrebbe diventare qualcosa del tipo `redis 127.0.0.1:6379[1]>`. Per tornare al database di default è sufficiente digitare `select 0`.
+In Redis, i database sono identificati da un numero, quello di default è il numero `0`. Per selezionare un database differente è sufficiente usare il comando `select` seguito dal numero identificativo: ad esempio digitare `select 1`. Redis dovrebbe restituire il messaggio `OK` e il prompt dovrebbe diventare qualcosa del tipo `redis 127.0.0.1:6379[1]>`. Per tornare al database di default è sufficiente digitare `select 0`.
 
 ### Comandi, Chiavi e Valori
 
@@ -180,7 +180,7 @@ Faremo ulteriori esempi ma, per il momento, è importante capire queste scelte d
 Abbiamo accennato che Redis è un data store in memoria persistente. Per quanto riguarda la persistenza, di default, Redis esegue un'immagine su disco del datastore in base al numero di chiavi che sono cambiate. In particolare è possibile configurare in modo che se X è il numero di chiavi che cambia, allora avvenga un salvataggio ogni Y secondi. Di default, Redis salverà il database ogni 60 secondi se 1000 o più chiavi sono cambiate, oppure ogni 15 minuti se sono cambiate nel frattempo 9 chiavi o meno.
 
 
-In alternativa (o anche in aggiunta al salvataggio periodico), Redis può funzionare in modalità `aggiunta` (*append*). Ogni qualvolta una chiave subisca un cambiamento, un file viene aggiornato su disco. Vale a dire, a volte è accettabile sacrificare, in caso di un guasto hardware o software, 60 secondi di dati, per avere migliori prestazionei. In altri casi questa perdita non è accettabile: Redis delega all'utilizzatore la scelta. Nel quinto capitolo verrà presentata una terza possilità, delegare la persistenza a un sistema secondario (*slave*)
+In alternativa (o anche in aggiunta al salvataggio periodico), Redis può funzionare in modalità `aggiunta` (*append*). Ogni qualvolta una chiave subisca un cambiamento, un file viene aggiornato su disco. Vale a dire, a volte è accettabile sacrificare, in caso di un guasto hardware o software, 60 secondi di dati, per avere migliori prestazione. In altri casi questa perdita non è accettabile: Redis delega all'utilizzatore la scelta. Nel quinto capitolo verrà presentata una terza possibilità, delegare la persistenza a un sistema secondario (*slave*)
 
 Per quanto riguarda la memoria, Redis mantiene tutti i propri dati in memoria. Un'ovvia implicazione di questo è che i costi di un sistema Redis si spostano verso la RAM, ad oggi ancora la parte più costosa di un server.
 
@@ -195,7 +195,7 @@ Come nota a margine, i 5.5MB dell'opera completa di Shakespeare possono essere c
 
 
 
-### Compore il Tutto
+### Comporre il Tutto
 
 Si sono toccati diversi argomenti ad un alto livello. Occorre ora mettere tutte queste cose assieme. In particolare, le limitazioni sulle interrogazioni, le strutture dati e il modo di memorizzare i dati in memoria in Redis.
 
@@ -276,7 +276,7 @@ In precedenza si è detto che Redis non dà importanza ai valori. Questo per la 
 
 Come si può intuire, le stringhe Redis sono ottime per costruire delle statistiche. Si provi, come esercizio, a incrementare `users:leto` (un valore non intero) e si veda cosa succede: si dovrebbe ottenere un errore.
 
-Un esempio avanzato sono i comandi `setbit` e `getbit`. Si veda ad esempio il  [fantastico post](http://blog.getspool.com/2011/11/29/fast-easy-realtime-metrics-using-redis-bitmaps/) in cui Spool usa in maniera molto efficiente questi due comandi per rispondere al questito \"quanti visitatori unici si sono avuti oggi?\". Usando un portatile e inseriti 128 milioni di utenti, la risposta viene generata in meno di 50 ms occupando meno di 16MB di memoria.
+Un esempio avanzato sono i comandi `setbit` e `getbit`. Si veda ad esempio il  [fantastico post](http://blog.getspool.com/2011/11/29/fast-easy-realtime-metrics-using-redis-bitmaps/) in cui Spool usa in maniera molto efficiente questi due comandi per rispondere al quesito \"quanti visitatori unici si sono avuti oggi?\". Usando un portatile e inseriti 128 milioni di utenti, la risposta viene generata in meno di 50 ms occupando meno di 16MB di memoria.
 
 Capire come funzionino le mappe di bit, o come Spool le usi, esula dagli scopi di questo libro, ma rimane importante vedere come le stringhe Redis siano più potenti di quanto inizialmente possa sembrare. Ad ogni modo il caso più comune per le stringhe è memorizzare oggetti (complessi o meno) e contatori. Inoltre, dato che ottenere un valore per chiave è così efficiente, sono spesso usate come  *cache* dati.
 
@@ -306,13 +306,13 @@ Per capire come funzionino, è importante vedere gli *hash* come oggetti struttu
 
 ### Liste
 
-Le liste Redis (`list`) permettono di memorizzare e manipolare serie omogenee di valori associati a una data chiave. E' possibile aggiungere valori ad una lista, ottenere il primo o l'ultimo elemento e, infine, manipolare valori a un dato indice. Le liste inoltre mantengono l'ordine di inserimento e forniscono efficienti operazioni basate sull'indice. Si potrebbe considerare, ad esempio, la lista degli ultimi utenti regstriati al nostro sito:
+Le liste Redis (`list`) permettono di memorizzare e manipolare serie omogenee di valori associati a una data chiave. E' possibile aggiungere valori ad una lista, ottenere il primo o l'ultimo elemento e, infine, manipolare valori a un dato indice. Le liste inoltre mantengono l'ordine di inserimento e forniscono efficienti operazioni basate sull'indice. Si potrebbe considerare, ad esempio, la lista degli ultimi utenti registrati al nostro sito:
 
 	rpush newusers goku
 	ltrim newusers 0 50
 
 
-Secondo un pattern molto comune, si inserisce un nuovo utente in cima alla lista, quindi si effettua il *trim* della stessa in modo che contenga solo gli ultimi 50 utenti. Si nota che l'operazione `ltrim` ha una complessità O(N) (come evidenziato nell'ottima documentazione), dove N però sono il numero degli elementi da rimuovere (e non gli elementi totali della lista). Nel nostro caso, dato che si effettua il `trim` dopo un singlolo inserimento, si avrà sempre un tempo costante O(1) (N sarà seempre uguale a 1).
+Secondo un pattern molto comune, si inserisce un nuovo utente in cima alla lista, quindi si effettua il *trim* della stessa in modo che contenga solo gli ultimi 50 utenti. Si nota che l'operazione `ltrim` ha una complessità O(N) (come evidenziato nell'ottima documentazione), dove N però sono il numero degli elementi da rimuovere (e non gli elementi totali della lista). Nel nostro caso, dato che si effettua il `trim` dopo un singolo inserimento, si avrà sempre un tempo costante O(1) (N sarà sempre uguale a 1).
 
 Si è visto, nell'uso della lista, un primo esempio in cui un valore associato a una chiave ha un riferimento logico ad un valore associato ad un'altra chiave (`goku` è cioè associato sia alla lista dei `newusers` che alla stringa degli `users`). Data questa relazione logica, se si volessero i dettagli degli ultimi 10 utenti usando il driver Ruby, si scriverebbe:
 
@@ -375,7 +375,7 @@ In the next chapter we'll look at how sorted sets can be used for tracking event
 
 ### In Questo Capitolo
 
-Si è fatta una panoramica ad alto livello delle cinque strutture dati in Redis. Da questa panoramica, il lettore potrà cominciare a pensare a come estendere l'uso di tali strutture oltre i casi fondamentali. In effetti, ci saranno sicuramente modi di usare le stringhe o gli insiemi ordinati che non sono stati ancora pensati. Ad ogni modo, si tenga presente che, anche se Redis espone cinque strutture, sono molti i casi in cui per implementare una caratteristca se ne usa solo un numero ridotto.
+Si è fatta una panoramica ad alto livello delle cinque strutture dati in Redis. Da questa panoramica, il lettore potrà cominciare a pensare a come estendere l'uso di tali strutture oltre i casi fondamentali. In effetti, ci saranno sicuramente modi di usare le stringhe o gli insiemi ordinati che non sono stati ancora pensati. Ad ogni modo, si tenga presente che, anche se Redis espone cinque strutture, sono molti i casi in cui per implementare una caratteristica se ne usa solo un numero ridotto.
 
 
 
@@ -399,7 +399,7 @@ I comandi più veloci sono quelli che hanno tempo costante o O(1). Cioè sia che
 La successiva fascia di performance è quella logaritmica, o O(log(N)). Deriva chiaramente da un approccio di tipo *divide et impera*, per il quale vengono considerate via via partizioni sempre più piccole dell'input. In questo modo anche quantità molto grandi vengono ridotte di molto dopo qualche iterazione. Per esempio il comando `zadd` possiede complessità O(log(N)), con N il numero di elementi già contenuti nell'insieme.
 
 
-In una fascia successiva vi è la complessità lineare o O(N). Un'interrogazione su una colonna non indicizzata di una tabella è un'operazione di complessità O(N). Lo è anche l'operazione `ltrim`, però in questo caso, N non è il numero di elementi della lista, quanto piuttosto il numero di elementi da rimuovere. Usare `ltrim` per rimuover un elemento da una lista di un milione di elementi sarà  quindi più veloce che non rimuovere 10 elementi da una lista formata da miglialia di oggetti. (Anche se probabilmente saranno entrambe così veloci in Redis da non accorgersi comunque della differenza).
+In una fascia successiva vi è la complessità lineare o O(N). Un'interrogazione su una colonna non indicizzata di una tabella è un'operazione di complessità O(N). Lo è anche l'operazione `ltrim`, però in questo caso, N non è il numero di elementi della lista, quanto piuttosto il numero di elementi da rimuovere. Usare `ltrim` per rimuover un elemento da una lista di un milione di elementi sarà  quindi più veloce che non rimuovere 10 elementi da una lista formata da migliaia di oggetti. (Anche se probabilmente saranno entrambe così veloci in Redis da non accorgersi comunque della differenza).
 
 `zremrangebyscore`, che rimuove da un insieme ordinato elementi che abbiano punteggio compreso tra un minimo e un massimo, ha invece complessità O(log(N)+M). Si ha cioè un ibrido. Leggendo la documentazione si vede che N è il numero totale di elementi nell'insieme e M è il numero di elementi da rimuovere. Il numero di elementi da rimuovere tenderà, per valori sufficientemente grandi, comunque a fornire un contributo più significativo, in termini di performance, del numero totale degli elementi della lista.
 
@@ -464,7 +464,7 @@ Ogni elemento di questo insieme è effettivamente un riferimento a una stringa R
 A parte la difficoltà di mantenere coerente queste strutture, si avrà inoltre un aumento di spazio occupato e di tempo di processore. Nella prossima sezione si vedranno dei metodi per ridurre questi costi aggiuntivi.
 
 
-Pensadoci un attimo però, i database relazionali, in modo nascosto, hanno comunuque lo stesso tipo di *overhead*: gli indici occupano memoria, devono essere scansiti o idealmente interrogati, e infine il record corrispondente verrà restituito. Questo *overhead* è reso trasparente, per il fatto che vengono attuate molte ottimizzazioni, dai database ma è comunque presente.
+Pensandoci un attimo però, i database relazionali, in modo nascosto, hanno comunque lo stesso tipo di *overhead*: gli indici occupano memoria, devono essere scansiti o idealmente interrogati, e infine il record corrispondente verrà restituito. Questo *overhead* è reso trasparente, per il fatto che vengono attuate molte ottimizzazioni, dai database ma è comunque presente.
 
 Ad ogni modo ogni preoccupazione riguardo performance o memoria va testata nel proprio caso. Probabilmente verrà scoperto che il tutto è un falso problema.
 
@@ -768,7 +768,7 @@ Il nostro ultimo capitolo è dedicato agli aspetti amministrativi dell'esecuzion
 
 ### Configurazione
 
-Quando si è lanciato la prima volta Redis server, esso ci ha avvertito della mancanza del file `redis.conf`. Questo file viene usato per configurare i vari aspetti di Redis. Ad ogni rilascio viene fornito un file di cofigurazione ben documentato e commentato (per questo motivo non si citeranno qui tutte le opzioni). Il file di esempio contiene le configurazioni di default, per cui è utile sia per sapere le svariate possibiltà di personalizzazione che per conoscere i valori di default. Si può trovare, per l'ultima versione disponibile al momento della scrittura di questo libro, all'URL <https://github.com/antirez/redis/raw/2.4.6/redis.conf>. **Per adattarlo alla propria versione sarà sufficiente sostituire \"2.4.6\" nell'indirizzo con la propria specifica versione. Si può conoscere la propria versione semplicemente eseguendo il comando `info` da linea di comando e guardare il primo valore.**
+Quando si è lanciato la prima volta Redis server, esso ci ha avvertito della mancanza del file `redis.conf`. Questo file viene usato per configurare i vari aspetti di Redis. Ad ogni rilascio viene fornito un file di configurazione ben documentato e commentato (per questo motivo non si citeranno qui tutte le opzioni). Il file di esempio contiene le configurazioni di default, per cui è utile sia per sapere le svariate possibilità di personalizzazione che per conoscere i valori di default. Si può trovare, per l'ultima versione disponibile al momento della scrittura di questo libro, all'URL <https://github.com/antirez/redis/raw/2.4.6/redis.conf>. **Per adattarlo alla propria versione sarà sufficiente sostituire \"2.4.6\" nell'indirizzo con la propria specifica versione. Si può conoscere la propria versione semplicemente eseguendo il comando `info` da linea di comando e guardare il primo valore.**
 
 
 Oltre al file `redis.conf`, è possibile usare il comando `config set` per impostare opzioni individuali. Si è già fatto uso di tale comando quando si è impostato il valore di `slowlog-log-slower-than` a 0, in modo che venisse profilato ogni comando.
@@ -779,7 +779,7 @@ Analogamente è presente il comando `config get` che visualizza il valore di un 
 
 ### Autenticazione
 
-Redis puà richiedere l'inserimento di una *password* impostando la proprietà `requirepass` con la *password* desiderata. A questo punto ogni *client* che voglia interagire con Redis server dovrà impartire il comando `auth <password>`.
+Redis può richiedere l'inserimento di una *password* impostando la proprietà `requirepass` con la *password* desiderata. A questo punto ogni *client* che voglia interagire con Redis server dovrà impartire il comando `auth <password>`.
 
 A questo punto si pone un altro problema: una volta che un client è autenticato può eseguire ogni comando, incluso il comando `flushall` che cancella ogni chiave dal database. Per questo, in configurazione, è possibile rinominare ogni comando ed avere una sorta di cifratura dello stesso:
 
