@@ -27,7 +27,7 @@ Il suo blog si trova a <http://openmymind.net> e i suoi tweets su [@karlseguin](
 
 ### Il Traduttore
 
-Sandro Conforto si occupa professionalmente dello sviluppo di applicazioni iPad in ambito finanziario. Si dedica inoltre ad Android e a J2EE. E' da sempre appassionato di Open Source, Linux, e di linguaggi dinamici. Vede lo sviluppo software prima di tutto come un'attività creativa. Quando non si dedica all' informatica ama andare in snow board e suonare la sua [chitarra classica ed elettrica](http://www.myspace.com/shantixmusic).
+Sandro Conforto si occupa professionalmente dello sviluppo di applicazioni iPad in ambito finanziario. Si dedica inoltre ad Android e a J2EE. E' da sempre appassionato di Open Source, Linux, e di linguaggi dinamici. Vede lo sviluppo software prima di tutto come un'attività creativa. Quando non si dedica all' informatica ama andare in snow board e suonare la sua [chitarra classica ed elettrica](http://goo.gl/v19rP).
 
 ### Ringraziamenti 
 
