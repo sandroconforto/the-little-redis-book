@@ -822,7 +822,7 @@ It isn't uncommon to disable both snapshotting and the append-only file (aof) on
 La replicazione delle istanze è lo strumento più immediato che un sito in crescita può sfruttare. In effetti alcuni comandi risultano costosi (`sort` ad esempio) e delegare la loro esecuzione ad uno *slave* può contribuire a mantenere inalterate le performance globali del sistema.
 
 
-A parte questo, una scalabilità vera con Redis si ottiene distribuendo le chiavi su molteplici istanze Redis (che in teoria potrebbero anche essere eseguite all'interno della medesima macchina, si ricordi al propsito che Redis e' *single-threaded*). Al momento, tutto questo è ancora delegato all'utente (anche se molti drivers Redis forniscono out of the box degli algoritmi per l'*hashing* utili allo scopo). Pensare a come strutturare i propri dati in modo da poter fornire una scalabilità orizzontale esula dagli scopi di questo libro. 
+A parte questo, una scalabilità vera con Redis si ottiene distribuendo le chiavi su molteplici istanze Redis (che in teoria potrebbero anche essere eseguite all'interno della medesima macchina, si ricordi al proposito che Redis e' *single-threaded*). Al momento, tutto questo è ancora delegato all'utente (anche se molti drivers Redis forniscono out of the box degli algoritmi per l'*hashing* utili allo scopo). Pensare a come strutturare i propri dati in modo da poter fornire una scalabilità orizzontale esula dagli scopi di questo libro. 
 
 
 La buona notizia è che sono in corso lavori per avere un Redis Cluster. Non solo verrà fornita una scalabilità orizzontale, incluso il ribilanciamento, ma verrà anche garantito un failover automatico per l'alta disponibilità.
