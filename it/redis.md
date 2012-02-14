@@ -308,7 +308,7 @@ Per capire come funzionino, è importante vedere gli *hash* come oggetti struttu
 
 Le liste Redis (`list`) permettono di memorizzare e manipolare serie omogenee di valori associati a una data chiave. E' possibile aggiungere valori ad una lista, ottenere il primo o l'ultimo elemento e, infine, manipolare valori a un dato indice. Le liste inoltre mantengono l'ordine di inserimento e forniscono efficienti operazioni basate sull'indice. Si potrebbe considerare, ad esempio, la lista degli ultimi utenti registrati al nostro sito:
 
-	rpush newusers goku
+	lpush newusers goku
 	ltrim newusers 0 50
 
 
@@ -457,7 +457,7 @@ Si è già visto come gli insiemi siano spesso sfruttati allo scopo di implement
 
 	sadd friends:leto ghanima paul chani jessica
 
-Ogni elemento di questo insieme è effettivamente un riferimento a una stringa Redis contenente i dettagli completi di ogni utente. Ma cosa succede se `chani` dovessere essere rinominato o il suo account dovesse essere cancellato? E se per qualche motivo è necessario tracciare anche la relazione inversa?
+Ogni elemento di questo insieme è effettivamente un riferimento a una stringa Redis contenente i dettagli completi di ogni utente. Ma cosa succede se `chani` dovesse essere rinominato o il suo account dovesse essere cancellato? E se per qualche motivo è necessario tracciare anche la relazione inversa?
 
 	sadd friends_of:chani leto paul
 
