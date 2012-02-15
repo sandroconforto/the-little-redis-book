@@ -1,3 +1,5 @@
 <dc:title>The Little Redis Book Edizione Italiana</dc:title>
+<dc:creator opf:file-as="Seguin, Karl" opf:role="aut">Karl Seguin</dc:creator>
 <dc:creator opf:file-as="Conforto, Sandro" opf:role="aut">Sandro Conforto</dc:creator>
+<dc:contributor opf:file-as="Neal, Perry" opf:role="edt">Perry Neal</dc:contributor>
 <dc:contributor opf:file-as="Sanfilippo, Salvatore" opf:role="edt">Salvatore Sanfilippo</dc:contributor>

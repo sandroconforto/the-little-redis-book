@@ -40,14 +40,29 @@ pandoc include markdown2pdf per generare il PDF usando una modifica di un templa
 	-V nohyphenation=$nohyphenation it/redis.md -o redis.pdf
 
 ## Generare l'EPUB ##
-Usare il seguente comando per generare la versione EPUB:
+Usare il seguente script per generare la versione EPUB:
 
-	pandoc -f markdown -t epub --epub-metadata=en/metadata.xml \
+	#!/bin/sh
+	paper=a4paper
+	hmargin=3cm
+	vmargin=3cm
+	fontsize=11pt
+
+	mainfont=Verdana
+	sansfont=Tahoma
+	monofont="Courier New"
+	columns=onecolumn
+	geometry=portrait
+	nohyphenation=true
+
+
+	pandoc -f markdown -t epub --epub-metadata=it/metadata.xml \
 	--template=template/xetex.template -V paper=$paper \
 	-V hmargin=$hmargin -V vmargin=$vmargin -V mainfont="$mainfont" \
 	-V sansfont="$sansfont" -V monofont="$monofont" -V geometry=$geometry \
 	-V columns=$columns -V fontsize=$fontsize -V nohyphenation=$nohyphenation \
 	it/redis.md -o redis.epub
+
 
 ## L'Immagine del Titolo ##
 Viene inclusa un'immagine PSD dell'immagine del titolo. Il font usato è [Comfortaa](http://www.dafont.com/comfortaa.font).
